@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netflix
+spec:
+  replicas: 2  #replicas means 2 same type pod ban jayenge
+  selector:
+    matchLabels:
+      app: netflix
+  template:
+    metadata:
+      labels:
+        app: netflix   #so we made deployment till here
+    spec:
+      containers:
+      - name: netflix
+        image: devopsinsiders/netflix-clone  # image set krdi
+        # resources:    #resource limit set krdi
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
+        ports:
+        - containerPort: 80
